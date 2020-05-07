@@ -1,3 +1,7 @@
+// GLOBAL DARKMODE VARIABLE //
+// GLOBAL DARKMODE VARIABLE //
+// GLOBAL DARKMODE VARIABLE //
+
 let darkmode;
 
 // GENERIC HELPER FUNCTIONS //
@@ -44,26 +48,17 @@ let darkmode;
 // Check if user has agreed to cookies, if the user has agreed create a cookie for the theme
     function checkCookieAgree() {
         if(getCookie('cookie-agreed') == undefined) {
-            console.log('not agreed yet');
+            return false;
         } else if (getCookie('cookie-agreed') == 0) {
-            console.log('disagreed');
+            return false;
         } else {
-            let darkmodeValue;
-            if (darkmode === true) {
-                darkmodeValue = 1;
-            } else {
-                darkmodeValue = 0
-            }
-            if (getCookie('suzyTheme') == undefined) {
-                console.log('suzytheme cookie');
-                setCookie('suzyTheme', darkmodeValue.toString, 14);
-            }
+            return true;
         }
     }
 
 // Set the cookie to the current value of darkmode
     function setCookieFromDarkmode() {
-        if (getCookie('suzyTheme') != undefined) {
+        if (checkCookieAgree() == true) {
             if (darkmode === true) {
                 setCookie('suzyTheme', 1, 14);
             } else {
@@ -71,12 +66,6 @@ let darkmode;
             }
         }
     }
-
-
-// SET & UNSET DARKMODE //
-// SET & UNSET DARKMODE //
-// SET & UNSET DARKMODE //
-
 
 // If themeCookie exists set the darkmode to the cookie value and renew the cookie
     function setDarkModeFromCookie() {
@@ -84,17 +73,22 @@ let darkmode;
             if (getCookie('suzyTheme') == '1') {
                 darkmode = true;
                 setThemeToDark(darkmode);
-                console.log('changed to dark theme');
+                console.log('set to dark theme from cookie');
                 setCookie('suzyTheme', 1, 14);
             } else {
                 darkmode = false;
                 setCookieFromDarkmode();
                 setThemeToDark(darkmode);
-                console.log('set to light theme');
+                console.log('set to light theme from cookie');
                 setCookie('suzyTheme', 0, 14);
             }
         }
     }
+
+// TOGGLE THEMES //
+// TOGGLE THEMES //
+// TOGGLE THEMES //
+
 
 // Set media attribute for activating/dectivating the darkmode
     function setThemeToDark(trueOrFalse) {
@@ -119,14 +113,16 @@ let darkmode;
     function themeToggleClick() {
         if (darkmode === true) {
             darkmode = false;
-            checkCookieAgree();
+            setCookieFromDarkmode();
             setThemeToDark(darkmode);
             setThemeButtonIconToMoon(darkmode);
+            console.log('switched to light theme');
         } else {
             darkmode = true;
-            checkCookieAgree();
+            setCookieFromDarkmode();
             setThemeToDark(darkmode);
             setThemeButtonIconToMoon(darkmode);
+            console.log('switched to dark theme');
 
         }
 
@@ -147,25 +143,27 @@ let darkmode;
 
 
 // Create the dark/light theme toggle button
-function createToggleButton() {
-    if (document.getElementById('themeToggleButton') == undefined) {
-        let themeToggleButton;
+    function createToggleButton() {
+        if (document.getElementById('themeToggleButton') == undefined) {
+            let themeToggleButton;
         
-        if (darkmode === true) {
-            themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-sun"></i></button>`;
-        } else {
-            themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-moon"></i></button>`;
-        }
+            if (darkmode === true) {
+                themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-sun"></i></button>`;
+            } else {
+                themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-moon"></i></button>`;
+            }
     
-        // add button to document
-        let rightNavMenu = document.getElementsByClassName('header')[0].getElementsByClassName('header__main_right')[0].getElementsByClassName('d-flex')[0];
+            // add button to document
+            let rightNavMenu = document.getElementsByClassName('header')[0].getElementsByClassName('header__main_right')[0].getElementsByClassName('d-flex')[0];
 
-        rightNavMenu.insertBefore(htmlToElement(themeToggleButton), rightNavMenu.childNodes[0]);
+            rightNavMenu.insertBefore(htmlToElement(themeToggleButton), rightNavMenu.childNodes[0]);
+        }
     }
-}
 
+// RUN AT PAGE LOAD //
+// RUN AT PAGE LOAD //
+// RUN AT PAGE LOAD //
 
-checkCookieAgree();
 createStyleSheet();
 setDarkModeFromCookie();
 createToggleButton();

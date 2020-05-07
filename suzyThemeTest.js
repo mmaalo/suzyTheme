@@ -1,4 +1,6 @@
-let darkmode;
+// THEME COLORS AND STYLES //
+// THEME COLORS AND STYLES //
+// THEME COLORS AND STYLES //
 
 let darkColors = {
     background1: '#303030',
@@ -308,6 +310,15 @@ let darkStyles = `
 
 `;
 
+// GLOBAL DARKMODE VARIABLE //
+// GLOBAL DARKMODE VARIABLE //
+// GLOBAL DARKMODE VARIABLE //
+
+let darkmode;
+
+// GENERIC HELPER FUNCTIONS //
+// GENERIC HELPER FUNCTIONS //
+// GENERIC HELPER FUNCTIONS //
 
 // General functions to get and set cookies
     function getCookie(cname) {
@@ -333,113 +344,140 @@ let darkStyles = `
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-
-function checkCookieAgree() {
-    // Check if user has agreed to cookies, if the user has agreed create a cookie for the theme
-    if(getCookie('cookie-agreed') == undefined) {
-        console.log('not agreed yet');
-    } else if (getCookie('cookie-agreed') == 0) {
-        console.log('disagreed');
-    } else {
-        let darkmodeValue;
-        if (darkmode === true) {
-            darkmodeValue = 1;
-        } else {
-            darkmodeValue = 0
-        }
-        if (getCookie('suzyTheme') == undefined) {
-            console.log('suzytheme cookie');
-            setCookie('suzyTheme', darkmodeValue.toString, 14);
-        }
+// Generic function to create a html elemet from a string
+    function htmlToElement(html) {
+        var template = document.createElement('template');
+        html = html.trim(); // Never return a text node of whitespace as the result
+        template.innerHTML = html;
+        return template.content.firstChild;
     }
 
-}
-
-function setCookieFromDarkmode() {
-    if (getCookie('suzyTheme') != undefined) {
-        if (darkmode === true) {
-            setCookie('suzyTheme', 1, 14);
-        } else {
-            setCookie('suzyTheme', 0, 14);
-        }
-    }
-
-}
-
-function setDarkModeFromCookie() {
-    // If themeCookie exists set the darkmode to the cookie value and renew the cookie
-    if (getCookie('suzyTheme') != undefined) {
-        if (getCookie('suzyTheme') == '1') {
-            darkmode = true;
-            document.getElementById('themeStyles').innerHTML = darkStyles;
-            console.log('changed to dark theme');
-            setCookie('suzyTheme', 1, 14);
-        } else {
-            darkmode = false;
-            setCookieFromDarkmode();
-            document.getElementById('themeStyles').innerHTML = '';
-            console.log('set to light theme');
-            setCookie('suzyTheme', 0, 14);
-        }
-    }
-}
-
-
-
-function createStyleSheet() {
-    // Create stylesheet for the theme if it does not exist
-    if (document.getElementById('themeStyles') == undefined) {
-        let themeStyles = document.createElement('style');
-        themeStyles.id = 'themeStyles';
-        document.head.appendChild(themeStyles);
-    }
     
-}
+// COOKIE FUNCTIONS //
+// COOKIE FUNCTIONS //
+// COOKIE FUNCTIONS //
 
-function createToggleButton() {
-    if (document.getElementById('themeToggleButton') == undefined) {
-        // create button
-        let themeToggleButton = document.createElement('button');
-        themeToggleButton.classList = ['header__toggleable-button'];
-        themeToggleButton.id = 'themeToggleButton';
-
-        // create font-awesome icon inside of button
-        let icon = document.createElement('i');
-        if (darkmode === true) {
-            icon.classList = 'fas fa-sun';
+// Check if user has agreed to cookies, if the user has agreed create a cookie for the theme
+    function checkCookieAgree() {
+        if(getCookie('cookie-agreed') == undefined) {
+            return false;
+        } else if (getCookie('cookie-agreed') == 0) {
+            return false;
         } else {
-            icon.classList = 'fas fa-moon';
+            return true;
         }
+    }
 
-        // add icon to button
-        themeToggleButton.appendChild(icon);
-
-        // add onclick function to change theme to button
-        themeToggleButton.onclick = function() {
+// Set the cookie to the current value of darkmode
+    function setCookieFromDarkmode() {
+        if (checkCookieAgree() == true) {
             if (darkmode === true) {
-                icon.classList = 'fas fa-moon';
-                darkmode = false;
-                setCookieFromDarkmode();
-                document.getElementById('themeStyles').innerHTML = '';
-                console.log('changed to light theme');
+                setCookie('suzyTheme', 1, 14);
             } else {
-                icon.classList = 'fas fa-sun';
-                darkmode = true;
-                setCookieFromDarkmode();
-                document.getElementById('themeStyles').innerHTML = darkStyles;
-                console.log('changed to dark theme');
+                setCookie('suzyTheme', 0, 14);
             }
         }
-        
-        // add button to document
-        let rightNavMenu = document.getElementsByClassName('header')[0].getElementsByClassName('header__main_right')[0].getElementsByClassName('d-flex')[0];
-
-        rightNavMenu.insertBefore(themeToggleButton, rightNavMenu.childNodes[0]);
     }
-}
+
+// If themeCookie exists set the darkmode to the cookie value and renew the cookie
+    function setDarkModeFromCookie() {
+        if (getCookie('suzyTheme') != undefined) {
+            if (getCookie('suzyTheme') == '1') {
+                darkmode = true;
+                setThemeToDark(darkmode);
+                console.log('set to dark theme from cookie');
+                setCookie('suzyTheme', 1, 14);
+            } else {
+                darkmode = false;
+                setCookieFromDarkmode();
+                setThemeToDark(darkmode);
+                console.log('set to light theme from cookie');
+                setCookie('suzyTheme', 0, 14);
+            }
+        }
+    }
+
+// TOGGLE THEMES //
+// TOGGLE THEMES //
+// TOGGLE THEMES //
 
 
-checkCookieAgree();
+// Set media attribute for activating/dectivating the darkmode
+    function setThemeToDark(trueOrFalse) {
+        if (trueOrFalse === true) {
+            document.getElementById('themeStyles').removeAttribute('media');
+        } else {
+            document.getElementById('themeStyles').media = 'max-width: 1px';
+        }
+    }
+
+// Set toggle button icon to moon or sun
+    function setThemeButtonIconToMoon(trueOrFalse) {
+        if (trueOrFalse === true) {
+            document.getElementById('themeToggleButtonIcon').classList = 'fas fa-sun';
+        } else {
+            document.getElementById('themeToggleButtonIcon').classList = 'fas fa-moon';
+        }
+
+    }
+
+// Toggle button is clicked
+    function themeToggleClick() {
+        if (darkmode === true) {
+            darkmode = false;
+            setCookieFromDarkmode();
+            setThemeToDark(darkmode);
+            setThemeButtonIconToMoon(darkmode);
+            console.log('switched to light theme');
+        } else {
+            darkmode = true;
+            setCookieFromDarkmode();
+            setThemeToDark(darkmode);
+            setThemeButtonIconToMoon(darkmode);
+            console.log('switched to dark theme');
+
+        }
+
+    }
+
+// CREATE STYLESHEET & TOGGLE BUTTON //
+// CREATE STYLESHEET & TOGGLE BUTTON //
+// CREATE STYLESHEET & TOGGLE BUTTON //
+
+
+    
+// Create stylesheet for the theme if it does not exist
+    function createStyleSheet() {
+        let stylesheet = `<style id="themeStyles" media="max-width: 1px">${darkStyles}</style>`;
+
+        if (document.getElementById('themeStyles') == undefined) {
+            document.head.appendChild(htmlToElement(stylesheet));
+        }
+    }
+
+
+// Create the dark/light theme toggle button
+    function createToggleButton() {
+        if (document.getElementById('themeToggleButton') == undefined) {
+            let themeToggleButton;
+        
+            if (darkmode === true) {
+                themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-sun"></i></button>`;
+            } else {
+                themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-moon"></i></button>`;
+            }
+    
+            // add button to document
+            let rightNavMenu = document.getElementsByClassName('header')[0].getElementsByClassName('header__main_right')[0].getElementsByClassName('d-flex')[0];
+
+            rightNavMenu.insertBefore(htmlToElement(themeToggleButton), rightNavMenu.childNodes[0]);
+        }
+    }
+
+// RUN AT PAGE LOAD //
+// RUN AT PAGE LOAD //
+// RUN AT PAGE LOAD //
+
 createStyleSheet();
 setDarkModeFromCookie();
 createToggleButton();
