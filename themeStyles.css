@@ -1,0 +1,291 @@
+
+    /* Set default colors */
+    body {
+        background-color: #1a1a1a;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #f5f5f5;
+    }
+    span, td, a, div {
+        color: #959595;
+    }
+    li a {
+        color: #7d8285;
+    }
+
+    /* Make 'Suzy Lu' logo white */
+    .site-logo {
+        filter: invert(100%);
+    }
+
+/* Header */
+    .header .header__container-wrapper--header__top{
+        background: #303030;
+        border-bottom: solid 1px #555;
+    }
+    .header .js-sticky-header-element {
+        background: #303030;
+    }
+    .header .js-sticky-header-placeholder {
+        background: #1a1a1a;
+    }
+    .header .header__social-menu i,
+    .header .header__user-nav i {
+        color: #f5f5f5;
+    }
+
+    /* Header user button */
+        .header__toggleable-account-menu ul.menu li:first-child {
+            border-top: 4px solid #8ab8cf;
+        }
+        .header__toggleable-account-menu ul.menu li {
+            background-color: #303030;
+        }
+        .header__toggleable-account-menu ul.menu li a {
+            color: #f5f5f5;
+        }
+
+    /* Header menu */
+        .tb-megamenu-item a,
+        .tb-megamenu-column-inner {
+            background-color: #303030;
+            color: #959595;
+        }
+        .tb-megamenu .tb-megamenu-item.level-1 a {
+            background-color: #303030;
+            color: #f5f5f5;
+        }
+        .tb-megamenu .tb-megamenu-item.level-1.active-trail>a {
+            background-color: #303030;
+            color: #f5f5f5;
+        }
+        .tb-megamenu .nav>.dropdown>.dropdown-toggle .caret {
+            color: #f5f5f5;
+        }
+
+/* Sidebar menu*/
+    #offcanvas-sidebar,
+    #offcanvas-sidebar .menu .menu-item {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    #offcanvas-sidebar .menu .menu-item:hover {
+        background-color: #f5f5f5;
+        color: #303030;
+    }
+    #offcanvas-sidebar ul.menu a {
+        border-bottom: 1px solid #959595;
+    }
+    #offcanvas-sidebar ul.menu a:hover,
+    #offcanvas-sidebar ul.menu a:focus {
+        color: #303030;
+    }
+    #offcanvas-sidebar ul.menu li.menu-item--expanded ul a {
+        color: #f5f5f5;
+        border-bottom: 1px solid #555;
+    }
+    #offcanvas-sidebar ul.menu li.menu-item--expanded ul a:hover {
+        color: #303030;
+    }
+
+/* Page Title */
+    .block--region-content-header.block--page-title-block .page-title,
+    .block--layout-builder.block--page-title-block .page-title {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+    }
+
+/* Channel Label */
+    .channel__label a {
+        color: #959595;
+    }
+
+/* Byline */
+    .byline__author-name a {
+        color: #8ab8cf;
+    }
+
+/* Breadcrumbs */
+    .simple-breadcrumb li a,
+    .simple-breadcrumb li:after {
+        color: #7d8285;
+    }
+    .simple-breadcrumb li {
+        color: #8ab8cf;
+    }
+
+/* Teaser */
+    .teaser__headline a {
+        color: #f5f5f5;
+    }
+    .teaser__content {
+        color: #1a1a1a
+    }
+    .teaser__authored span {
+        color: #7d8285;
+    }
+
+/* Share links */
+    .fa-twitter,
+    .fa-facebook-f,
+    .share_text {
+        color: #f5f5f5;
+    }
+
+/* Support links */
+    .field--name-body td,
+    .field--name-body td a,
+    .field--name-body td a i {
+        color: #959595 !important;
+    }
+
+    .field__item a {
+        color: #959595;
+    }
+    .field .field--name-type-comment {
+        background-color: #1a1a1a !important;
+    }
+    span.field--name-title {
+        color: #f5f5f5;
+    }
+
+/* Video tag list */
+    .field__label {
+        color: #8ab8cf;
+    }
+
+/* Login & user section */
+    label {
+        color: #8ab8cf;
+    }
+    .description {
+        color: #7d8285;
+    }
+    .button {
+        background-color: #f44336;
+        color: #f5f5f5;
+        border: none;
+    }
+
+    /* Tabs menu */
+        ul.tabs.primary>li a {
+            background-color: #303030;
+            color: #959595;
+        }
+        ul.tabs.primary>li a:hover {
+            color: #f5f5f5;
+        }
+        ul.tabs.primary>li a.is-active {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            border: 1px solid #555;
+        }
+        ul.tabs.primary>li a:hover {
+            color: #303030;
+            background-color: #f5f5f5;
+        }
+
+    /* View tab */
+        .user__info-wrapper {
+            background-color: #1a1a1a;
+        }
+
+    /* Edit tab */
+        .horizontal-tabs ul.horizontal-tabs-list {
+            border-bottom: 1px solid #8ab8cf;
+        }
+        .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a {
+            color: #959595;
+            border-bottom: 6px solid #959595;
+        }
+        .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a:hover {
+            color: #f5f5f5;
+            border-bottom: 6px solid #f5f5f5;
+        }
+        .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button a:hover {
+            color: #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .password-strength__title,
+        .password-confirm {
+            color: #959595;
+            border-bottom: 6px solid #959595;
+        }
+
+
+/* Article header*/
+    .article-header__content {
+        background-color: #1a1a1a;
+    }
+
+
+/* Comment Section */
+    .field--name-field-comment {
+        background-color: #303030;
+    }
+    .field--name-field-comment h2.title {
+        color: #f5f5f5;
+    }
+    .comment-content-wrapper .content {
+        color: #f5f5f5
+    }
+    .comment-user-name a,
+    .comment__links li {
+        color: #8ab8cf;
+    }
+    footer.comment-user-info {
+        border-left: 3px solid #8ab8cf;
+    }
+    .comment-date {
+        color: #7d8285
+    }
+    .comment__links a {
+        color: #959595;
+    }
+
+/* Pager */
+    ul.pager__items li.is-active, 
+    ul.pager__items li.is-active a {
+        color: #f5f5f5;
+        background-color: #1a1a1a;
+    }
+    ul.pager__items li a {
+        color: #959595;
+        background-color: #303030;
+        border: 1px solid #959595;
+    }
+    ul.pager__items li:hover,
+    ul.pager__items li a:hover {
+        color: #1a1a1a;
+        background-color: #f5f5f5;
+    }
+
+
+/* Footer */
+    .footer-wrapper {
+        background-color: #303030;
+    }
+    .footer-bottom-wrapper p,
+    .footer-bottom-wrapper .menu .menu-item a {
+        color: #7d8285;
+    }
+    .field--name-body p {
+        color: #959595;
+    }
+
+    /* Tag list*/
+        .tag-list a {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        .tag-list a:hover {
+            color: #959595;
+        }
+
+        /* Scroll to top*/
+        .scroll-to-top-button {
+            border: 1px solid #959595;
+        }
+

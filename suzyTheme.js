@@ -1,313 +1,8 @@
 let darkmode;
 
-let darkColors = {
-    background1: '#303030',
-    background2: '#1a1a1a',
-    border1: '#555',
-    text1: '#959595',
-    text2: '#f5f5f5',
-    text3: '#7d8285',
-    text4: '#8ab8cf',
-    button: '#f44336',
-    invert: 'invert(100%)'
-}
-
-let darkStyles = `
-    /* Set default colors */
-        body {
-            background-color: ${darkColors.background2};
-        }
-        h1, h2, h3, h4, h5, h6 {
-            color: ${darkColors.text2};
-        }
-        span, td, a, div {
-            color: ${darkColors.text1};
-        }
-        li a {
-            color: ${darkColors.text3};
-        }
-
-        /* Make 'Suzy Lu' logo white */
-        .site-logo {
-            filter: ${darkColors.invert};
-        }
-
-    /* Header */
-        .header .header__container-wrapper--header__top{
-            background: ${darkColors.background1};
-            border-bottom: solid 1px ${darkColors.border1};
-        }
-        .header .js-sticky-header-element {
-            background: ${darkColors.background1};
-        }
-        .header .js-sticky-header-placeholder {
-            background: ${darkColors.background2};
-        }
-        .header .header__social-menu i,
-        .header .header__user-nav i {
-            color: ${darkColors.text2};
-        }
-
-        /* Header user button */
-            .header__toggleable-account-menu ul.menu li:first-child {
-                border-top: 4px solid ${darkColors.text4};
-            }
-            .header__toggleable-account-menu ul.menu li {
-                background-color: ${darkColors.background1};
-            }
-            .header__toggleable-account-menu ul.menu li a {
-                color: ${darkColors.text2};
-            }
-
-        /* Header menu */
-            .tb-megamenu-item a,
-            .tb-megamenu-column-inner {
-                background-color: ${darkColors.background1};
-                color: ${darkColors.text1};
-            }
-            .tb-megamenu .tb-megamenu-item.level-1 a {
-                background-color: ${darkColors.background1};
-                color: ${darkColors.text2};
-            }
-            .tb-megamenu .tb-megamenu-item.level-1.active-trail>a {
-                background-color: ${darkColors.background1};
-                color: ${darkColors.text2};
-            }
-            .tb-megamenu .nav>.dropdown>.dropdown-toggle .caret {
-                color: ${darkColors.text2};
-            }
-
-    /* Sidebar menu*/
-        #offcanvas-sidebar,
-        #offcanvas-sidebar .menu .menu-item {
-            background-color: ${darkColors.background2};
-            color: ${darkColors.text2};
-            -webkit-box-shadow: none;
-            box-shadow: none;
-        }
-        #offcanvas-sidebar .menu .menu-item:hover {
-            background-color: ${darkColors.text2};
-            color: ${darkColors.background1};
-        }
-        #offcanvas-sidebar ul.menu a {
-            border-bottom: 1px solid ${darkColors.text1};
-        }
-        #offcanvas-sidebar ul.menu a:hover,
-        #offcanvas-sidebar ul.menu a:focus {
-            color: ${darkColors.background1};
-        }
-        #offcanvas-sidebar ul.menu li.menu-item--expanded ul a {
-            color: ${darkColors.text2};
-            border-bottom: 1px solid ${darkColors.border1};
-        }
-        #offcanvas-sidebar ul.menu li.menu-item--expanded ul a:hover {
-            color: ${darkColors.background1};
-        }
-
-    /* Page Title */
-        .block--region-content-header.block--page-title-block .page-title,
-        .block--layout-builder.block--page-title-block .page-title {
-            background-color: ${darkColors.background2};
-            color: ${darkColors.text2};
-        }
-
-    /* Channel Label */
-        .channel__label a {
-            color: ${darkColors.text1};
-        }
-
-    /* Byline */
-        .byline__author-name a {
-            color: ${darkColors.text4};
-        }
-
-    /* Breadcrumbs */
-        .simple-breadcrumb li a,
-        .simple-breadcrumb li:after {
-            color: ${darkColors.text3};
-        }
-        .simple-breadcrumb li {
-            color: ${darkColors.text4};
-        }
-
-    /* Teaser */
-        .teaser__headline a {
-            color: ${darkColors.text2};
-        }
-        .teaser__content {
-            color: ${darkColors.background2}
-        }
-        .teaser__authored span {
-            color: ${darkColors.text3};
-        }
-
-    /* Share links */
-        .fa-twitter,
-        .fa-facebook-f,
-        .share_text {
-            color: ${darkColors.text2};
-        }
-
-    /* Support links */
-        .field--name-body td,
-        .field--name-body td a,
-        .field--name-body td a i {
-            color: ${darkColors.text1} !important;
-        }
-
-        .field__item a {
-            color: ${darkColors.text1};
-        }
-        .field .field--name-type-comment {
-            background-color: ${darkColors.background2} !important;
-        }
-        span.field--name-title {
-            color: ${darkColors.text2};
-        }
-
-    /* Video tag list */
-        .field__label {
-            color: ${darkColors.text4};
-        }
-
-    /* Login & user section */
-        label {
-            color: ${darkColors.text4};
-        }
-        .description {
-            color: ${darkColors.text3};
-        }
-        .button {
-            background-color: ${darkColors.button};
-            color: ${darkColors.text2};
-            border: none;
-        }
-
-        /* Tabs menu */
-            ul.tabs.primary>li a {
-                background-color: ${darkColors.background1};
-                color: ${darkColors.text1};
-            }
-            ul.tabs.primary>li a:hover {
-                color: ${darkColors.text2};
-            }
-            ul.tabs.primary>li a.is-active {
-                background-color: ${darkColors.background2};
-                color: ${darkColors.text2};
-                border: 1px solid ${darkColors.border1};
-            }
-            ul.tabs.primary>li a:hover {
-                color: ${darkColors.background1};
-                background-color: ${darkColors.text2};
-            }
-
-        /* View tab */
-            .user__info-wrapper {
-                background-color: ${darkColors.background2};
-            }
-
-        /* Edit tab */
-            .horizontal-tabs ul.horizontal-tabs-list {
-                border-bottom: 1px solid ${darkColors.text4};
-            }
-            .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a {
-                color: ${darkColors.text1};
-                border-bottom: 6px solid ${darkColors.text1};
-            }
-            .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a:hover {
-                color: ${darkColors.text2};
-                border-bottom: 6px solid ${darkColors.text2};
-            }
-            .horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button a:hover {
-                color: ${darkColors.text2};
-                border-bottom: 1px solid ${darkColors.text2};
-            }
-            .password-strength__title,
-            .password-confirm {
-                color: ${darkColors.text1};
-                border-bottom: 6px solid ${darkColors.text1};
-            }
-
-
-    /* Article header*/
-        .article-header__content {
-            background-color: ${darkColors.background2};
-        }
-
-
-    /* Comment Section */
-        .field--name-field-comment {
-            background-color: ${darkColors.background1};
-        }
-        .field--name-field-comment h2.title {
-            color: ${darkColors.text2};
-        }
-        .comment-content-wrapper .content {
-            color: ${darkColors.text2}
-        }
-        .comment-user-name a,
-        .comment__links li {
-            color: ${darkColors.text4};
-        }
-        footer.comment-user-info {
-            border-left: 3px solid ${darkColors.text4};
-        }
-        .comment-date {
-            color: ${darkColors.text3}
-        }
-        .comment__links a {
-            color: ${darkColors.text1};
-        }
-
-    /* Pager */
-        ul.pager__items li.is-active, 
-        ul.pager__items li.is-active a {
-            color: ${darkColors.text2};
-            background-color: ${darkColors.background2};
-        }
-        ul.pager__items li {
-            
-        }
-        ul.pager__items li a {
-            color: ${darkColors.text1};
-            background-color: ${darkColors.background1};
-            border: 1px solid ${darkColors.text1};
-        }
-        ul.pager__items li:hover,
-        ul.pager__items li a:hover {
-            color: ${darkColors.background2};
-            background-color: ${darkColors.text2};
-        }
-
-
-    /* Footer */
-        .footer-wrapper {
-            background-color: ${darkColors.background1};
-        }
-        .footer-bottom-wrapper p,
-        .footer-bottom-wrapper .menu .menu-item a {
-            color: ${darkColors.text3};
-        }
-        .field--name-body p {
-            color: ${darkColors.text1};
-        }
-
-        /* Tag list*/
-            .tag-list a {
-                background-color: ${darkColors.background2};
-                color: ${darkColors.text2};
-            }
-            .tag-list a:hover {
-                color: ${darkColors.text1};
-            }
-
-            /* Scroll to top*/
-            .scroll-to-top-button {
-                border: 1px solid ${darkColors.text1};
-            }
-
-`;
-
+// GENERIC HELPER FUNCTIONS //
+// GENERIC HELPER FUNCTIONS //
+// GENERIC HELPER FUNCTIONS //
 
 // General functions to get and set cookies
     function getCookie(cname) {
@@ -333,108 +28,139 @@ let darkStyles = `
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
-
-function checkCookieAgree() {
-    // Check if user has agreed to cookies, if the user has agreed create a cookie for the theme
-    if(getCookie('cookie-agreed') == undefined) {
-        console.log('not agreed yet');
-    } else if (getCookie('cookie-agreed') == 0) {
-        console.log('disagreed');
-    } else {
-        let darkmodeValue;
-        if (darkmode === true) {
-            darkmodeValue = 1;
-        } else {
-            darkmodeValue = 0
-        }
-        if (getCookie('suzyTheme') == undefined) {
-            console.log('suzytheme cookie');
-            setCookie('suzyTheme', darkmodeValue.toString, 14);
-        }
+// Generic function to create a html elemet from a string
+    function htmlToElement(html) {
+        var template = document.createElement('template');
+        html = html.trim(); // Never return a text node of whitespace as the result
+        template.innerHTML = html;
+        return template.content.firstChild;
     }
 
-}
-
-function setCookieFromDarkmode() {
-    if (getCookie('suzyTheme') != undefined) {
-        if (darkmode === true) {
-            setCookie('suzyTheme', 1, 14);
-        } else {
-            setCookie('suzyTheme', 0, 14);
-        }
-    }
-
-}
-
-function setDarkModeFromCookie() {
-    // If themeCookie exists set the darkmode to the cookie value and renew the cookie
-    if (getCookie('suzyTheme') != undefined) {
-        if (getCookie('suzyTheme') == '1') {
-            darkmode = true;
-            document.getElementById('themeStyles').innerHTML = darkStyles;
-            console.log('changed to dark theme');
-            setCookie('suzyTheme', 1, 14);
-        } else {
-            darkmode = false;
-            setCookieFromDarkmode();
-            document.getElementById('themeStyles').innerHTML = '';
-            console.log('set to light theme');
-            setCookie('suzyTheme', 0, 14);
-        }
-    }
-}
-
-
-
-function createStyleSheet() {
-    // Create stylesheet for the theme if it does not exist
-    if (document.getElementById('themeStyles') == undefined) {
-        let themeStyles = document.createElement('style');
-        themeStyles.id = 'themeStyles';
-        document.head.appendChild(themeStyles);
-    }
     
-}
+// COOKIE FUNCTIONS //
+// COOKIE FUNCTIONS //
+// COOKIE FUNCTIONS //
 
-function createToggleButton() {
-    if (document.getElementById('themeToggleButton') == undefined) {
-        // create button
-        let themeToggleButton = document.createElement('button');
-        themeToggleButton.classList = ['header__toggleable-button'];
-        themeToggleButton.id = 'themeToggleButton';
-
-        // create font-awesome icon inside of button
-        let icon = document.createElement('i');
-        if (darkmode === true) {
-            icon.classList = 'fas fa-sun';
+// Check if user has agreed to cookies, if the user has agreed create a cookie for the theme
+    function checkCookieAgree() {
+        if(getCookie('cookie-agreed') == undefined) {
+            console.log('not agreed yet');
+        } else if (getCookie('cookie-agreed') == 0) {
+            console.log('disagreed');
         } else {
-            icon.classList = 'fas fa-moon';
-        }
-
-        // add icon to button
-        themeToggleButton.appendChild(icon);
-
-        // add onclick function to change theme to button
-        themeToggleButton.onclick = function() {
+            let darkmodeValue;
             if (darkmode === true) {
-                icon.classList = 'fas fa-moon';
-                darkmode = false;
-                setCookieFromDarkmode();
-                document.getElementById('themeStyles').innerHTML = '';
-                console.log('changed to light theme');
+                darkmodeValue = 1;
             } else {
-                icon.classList = 'fas fa-sun';
-                darkmode = true;
-                setCookieFromDarkmode();
-                document.getElementById('themeStyles').innerHTML = darkStyles;
-                console.log('changed to dark theme');
+                darkmodeValue = 0
+            }
+            if (getCookie('suzyTheme') == undefined) {
+                console.log('suzytheme cookie');
+                setCookie('suzyTheme', darkmodeValue.toString, 14);
             }
         }
+    }
+
+// Set the cookie to the current value of darkmode
+    function setCookieFromDarkmode() {
+        if (getCookie('suzyTheme') != undefined) {
+            if (darkmode === true) {
+                setCookie('suzyTheme', 1, 14);
+            } else {
+                setCookie('suzyTheme', 0, 14);
+            }
+        }
+    }
+
+
+// SET & UNSET DARKMODE //
+// SET & UNSET DARKMODE //
+// SET & UNSET DARKMODE //
+
+
+// If themeCookie exists set the darkmode to the cookie value and renew the cookie
+    function setDarkModeFromCookie() {
+        if (getCookie('suzyTheme') != undefined) {
+            if (getCookie('suzyTheme') == '1') {
+                darkmode = true;
+                setThemeToDark(darkmode);
+                console.log('changed to dark theme');
+                setCookie('suzyTheme', 1, 14);
+            } else {
+                darkmode = false;
+                setCookieFromDarkmode();
+                setThemeToDark(darkmode);
+                console.log('set to light theme');
+                setCookie('suzyTheme', 0, 14);
+            }
+        }
+    }
+
+// Set media attribute for activating/dectivating the darkmode
+    function setThemeToDark(trueOrFalse) {
+        if (trueOrFalse === true) {
+            document.getElementById('themeStyles').removeAttribute('media');
+        } else {
+            document.getElementById('themeStyles').media = 'max-width: 1px';
+        }
+    }
+
+// Set toggle button icon to moon or sun
+    function setThemeButtonIconToMoon(trueOrFalse) {
+        if (trueOrFalse === true) {
+            document.getElementById('themeToggleButtonIcon').classList = 'fas fa-sun';
+        } else {
+            document.getElementById('themeToggleButtonIcon').classList = 'fas fa-moon';
+        }
+
+    }
+
+// Toggle button is clicked
+    function themeToggleClick() {
+        if (darkmode === true) {
+            darkmode = false;
+            checkCookieAgree();
+            setThemeToDark(darkmode);
+            setThemeButtonIconToMoon(darkmode);
+        } else {
+            darkmode = true;
+            checkCookieAgree();
+            setThemeToDark(darkmode);
+            setThemeButtonIconToMoon(darkmode);
+
+        }
+
+    }
+
+// CREATE STYLESHEET & TOGGLE BUTTON //
+// CREATE STYLESHEET & TOGGLE BUTTON //
+// CREATE STYLESHEET & TOGGLE BUTTON //
+    
+// Create stylesheet for the theme if it does not exist
+    function createStyleSheet() {
+        let stylesheet = `<style id="themeStyles" media="max-width: 1px">body{background-color:#1a1a1a}h1,h2,h3,h4,h5,h6{color:#f5f5f5}a,div,span,td{color:#959595}li a{color:#7d8285}.site-logo{filter:invert(100%)}.header .header__container-wrapper--header__top{background:#303030;border-bottom:solid 1px #555}.header .js-sticky-header-element{background:#303030}.header .js-sticky-header-placeholder{background:#1a1a1a}.header .header__social-menu i,.header .header__user-nav i{color:#f5f5f5}.header__toggleable-account-menu ul.menu li:first-child{border-top:4px solid #8ab8cf}.header__toggleable-account-menu ul.menu li{background-color:#303030}.header__toggleable-account-menu ul.menu li a{color:#f5f5f5}.tb-megamenu-column-inner,.tb-megamenu-item a{background-color:#303030;color:#959595}.tb-megamenu .tb-megamenu-item.level-1 a{background-color:#303030;color:#f5f5f5}.tb-megamenu .tb-megamenu-item.level-1.active-trail>a{background-color:#303030;color:#f5f5f5}.tb-megamenu .nav>.dropdown>.dropdown-toggle .caret{color:#f5f5f5}#offcanvas-sidebar,#offcanvas-sidebar .menu .menu-item{background-color:#1a1a1a;color:#f5f5f5;-webkit-box-shadow:none;box-shadow:none}#offcanvas-sidebar .menu .menu-item:hover{background-color:#f5f5f5;color:#303030}#offcanvas-sidebar ul.menu a{border-bottom:1px solid #959595}#offcanvas-sidebar ul.menu a:focus,#offcanvas-sidebar ul.menu a:hover{color:#303030}#offcanvas-sidebar ul.menu li.menu-item--expanded ul a{color:#f5f5f5;border-bottom:1px solid #555}#offcanvas-sidebar ul.menu li.menu-item--expanded ul a:hover{color:#303030}.block--layout-builder.block--page-title-block .page-title,.block--region-content-header.block--page-title-block .page-title{background-color:#1a1a1a;color:#f5f5f5}.channel__label a{color:#959595}.byline__author-name a{color:#8ab8cf}.simple-breadcrumb li a,.simple-breadcrumb li:after{color:#7d8285}.simple-breadcrumb li{color:#8ab8cf}.teaser__headline a{color:#f5f5f5}.teaser__content{color:#1a1a1a}.teaser__authored span{color:#7d8285}.fa-facebook-f,.fa-twitter,.share_text{color:#f5f5f5}.field--name-body td,.field--name-body td a,.field--name-body td a i{color:#959595!important}.field__item a{color:#959595}.field .field--name-type-comment{background-color:#1a1a1a!important}span.field--name-title{color:#f5f5f5}.field__label{color:#8ab8cf}label{color:#8ab8cf}.description{color:#7d8285}.button{background-color:#f44336;color:#f5f5f5;border:none}ul.tabs.primary>li a{background-color:#303030;color:#959595}ul.tabs.primary>li a:hover{color:#f5f5f5}ul.tabs.primary>li a.is-active{background-color:#1a1a1a;color:#f5f5f5;border:1px solid #555}ul.tabs.primary>li a:hover{color:#303030;background-color:#f5f5f5}.user__info-wrapper{background-color:#1a1a1a}.horizontal-tabs ul.horizontal-tabs-list{border-bottom:1px solid #8ab8cf}.horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a{color:#959595;border-bottom:6px solid #959595}.horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button.selected a:hover{color:#f5f5f5;border-bottom:6px solid #f5f5f5}.horizontal-tabs ul.horizontal-tabs-list .horizontal-tab-button a:hover{color:#f5f5f5;border-bottom:1px solid #f5f5f5}.password-confirm,.password-strength__title{color:#959595;border-bottom:6px solid #959595}.article-header__content{background-color:#1a1a1a}.field--name-field-comment{background-color:#303030}.field--name-field-comment h2.title{color:#f5f5f5}.comment-content-wrapper .content{color:#f5f5f5}.comment-user-name a,.comment__links li{color:#8ab8cf}footer.comment-user-info{border-left:3px solid #8ab8cf}.comment-date{color:#7d8285}.comment__links a{color:#959595}ul.pager__items li.is-active,ul.pager__items li.is-active a{color:#f5f5f5;background-color:#1a1a1a}ul.pager__items li a{color:#959595;background-color:#303030;border:1px solid #959595}ul.pager__items li a:hover,ul.pager__items li:hover{color:#1a1a1a;background-color:#f5f5f5}.footer-wrapper{background-color:#303030}.footer-bottom-wrapper .menu .menu-item a,.footer-bottom-wrapper p{color:#7d8285}.field--name-body p{color:#959595}.tag-list a{background-color:#1a1a1a;color:#f5f5f5}.tag-list a:hover{color:#959595}.scroll-to-top-button{border:1px solid #959595}</style>`;
+
+        if (document.getElementById('themeStyles') == undefined) {
+            document.head.appendChild(htmlToElement(stylesheet));
+        }
+    }
+
+
+// Create the dark/light theme toggle button
+function createToggleButton() {
+    if (document.getElementById('themeToggleButton') == undefined) {
+        let themeToggleButton;
         
+        if (darkmode === true) {
+            themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-sun"></i></button>`;
+        } else {
+            themeToggleButton = `<button id="themeToggleButton" class="header__toggleable-button"><i id="themeToggleButtonIcon" onclick="themeToggleClick()" class="fas fa-moon"></i></button>`;
+        }
+    
         // add button to document
         let rightNavMenu = document.getElementsByClassName('header')[0].getElementsByClassName('header__main_right')[0].getElementsByClassName('d-flex')[0];
 
-        rightNavMenu.insertBefore(themeToggleButton, rightNavMenu.childNodes[0]);
+        rightNavMenu.insertBefore(htmlToElement(themeToggleButton), rightNavMenu.childNodes[0]);
     }
 }
 
