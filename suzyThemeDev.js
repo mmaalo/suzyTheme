@@ -172,6 +172,23 @@ let darkStyles = `
             color: ${darkColors.text4};
         }
 
+    /* Search results */
+        .search-results h3.search-result__title a {
+            color: ${darkColors.text2};
+        }
+        .search-results li:hover .search-result__title a {
+            color: ${darkColors.background2};
+        }
+        .search-results li p.search-result__snippet {
+            color: ${darkColors.text1};
+        }   
+        .search-results li:hover p.search-result__snippet {
+            color: ${darkColors.background1};
+        }
+        .search-results search-result-info {
+            color: ${darkColors.text4};
+        }
+
     /* Login & user section */
         label {
             color: ${darkColors.text4};
