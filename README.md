@@ -5,6 +5,8 @@
   - In any actual implementation both the #themeStyles style tag and #themeToggleButton button should be hard coded into the website. The JS that creates these html elements could then be omitted.
 
 ### The three files are all variations of the same thing: 
+  - IMPORTANT: some browsers like vivaldi won't run the suzythemeDev.js properly. In that case use the minified version instead. All versions works great in chromium.
+
   - The suzyThemeDev.js file has all the css styles for the dark theme set with variables that can be changed easly.
   - The suzyTheme.js file has the css styles for the dark theme minified and hard coded.
   - The suzyTheme.min.js file is a minified version of the suzyTheme.js file.
