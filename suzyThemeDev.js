@@ -10,6 +10,7 @@ let darkColors = {
     text2: '#f5f5f5',
     text3: '#7d8285',
     text4: '#8ab8cf',
+    fieldColor: '#ffffff',
     button: '#f44336',
     invert: 'invert(100%)'
 }
@@ -201,6 +202,12 @@ let darkStyles = `
             color: ${darkColors.text2};
             border: none;
         }
+        .button:hover {
+            background-color: ${darkColors.text2};
+            color: ${darkColors.background2};
+            border: none;
+
+        }
 
         /* Tabs menu */
             ul.tabs.primary>li a {
@@ -246,6 +253,35 @@ let darkStyles = `
                 color: ${darkColors.text1};
                 border-bottom: 6px solid ${darkColors.text1};
             }
+        /* Orders tab */
+            td.is-active {
+                background-color: ${darkColors.background1};
+                color: ${darkColors.text2};
+            }
+
+
+    /* Cart */
+        .checkout-progress .checkout-progress--step__previous,
+        .checkout-progress .checkout-progress--step__next {
+            color: ${darkColors.text3};
+        }
+        .checkout-progress .checkout-progress--step__current {
+            color: ${darkColors.text4};
+        }
+
+
+        .stripe-form #card-number-element,
+        .stripe-form #expiration-element,
+        .stripe-form #security-code-element {
+            background-color: ${darkColors.fieldColor};
+        }
+
+        .path-checkout .field--name-address {
+            background-color: ${darkColors.background1};
+        }
+        .path-checkout .field--name-address span {
+            color: ${darkColors.text2};
+        }
 
 
     /* Article header*/
@@ -423,8 +459,10 @@ let darkmode;
     function setThemeToDark(trueOrFalse) {
         if (trueOrFalse === true) {
             document.getElementById('themeStyles').removeAttribute('media');
+            setDarkTabColors(true);
         } else {
             document.getElementById('themeStyles').media = 'max-width: 1px';
+            setDarkTabColors(false);
         }
     }
 
@@ -490,6 +528,95 @@ let darkmode;
             rightNavMenu.insertBefore(htmlToElement(themeToggleButton), rightNavMenu.childNodes[0]);
         }
     }
+
+// Regular & Vip tabs
+    function setDarkTabColors(trueOrFalse) {
+        
+        function setTab(tab) {
+            let isSelected = false;
+
+            if (tabSelected.includes(tab.id)) {
+                isSelected = true;
+            }
+
+            if (trueOrFalse === true) {
+                tab.style.border = '';
+                tab.style.backgroundColor = '';
+                tab.style.color = '';
+
+                tab.style.border = `1px solid ${darkColors.border1}`;
+                tab.style.borderBottom = '';
+            
+                tab.style.backgroundColor = darkColors.background1;
+                tab.children[0].style.color = darkColors.text2;
+                if (isSelected) {
+                    tab.style.backgroundColor = darkColors.background2;
+                    tab.children[0].style.color = darkColors.text2;
+                }
+                tab.onmouseover = function() {
+                    this.style.backgroundColor = darkColors.text2;
+                    this.children[0].style.color= darkColors.background2;
+                }
+                tab.onmouseleave = function() {
+                    tab.style.backgroundColor = darkColors.background1;
+                    tab.children[0].style.color = darkColors.text2;
+                    if (isSelected) {
+                        tab.style.backgroundColor = darkColors.background2;
+                        tab.children[0].style.color = darkColors.text2;
+                    }
+
+                }
+            } else {
+                tab.style.border = '';
+                tab.style.backgroundColor = '';
+                tab.style.color = '';
+
+                tab.style.backgroundColor = '#eceff1';
+                tab.children[0].style.color = '#000000';
+                if (isSelected) {
+                    tab.style.backgroundColor = '#c3c3c3';
+                    tab.onmouseover = function() {
+                        tab.style.backgroundColor = '#c3c3c3';
+                    }
+                    tab.onmouseleave = function() {
+                        tab.style.backgroundColor = '#c3c3c3';
+                    }
+                }
+                if (!isSelected) {
+                    tab.onmouseover = function() {
+                        tab.style.backgroundColor = '#dedada';
+                    }
+                    tab.onmouseleave = function() {
+                        tab.style.backgroundColor = '#eceff1';
+                    }
+                }
+            }
+        }
+
+        const tabRegular = document.getElementById('tab-regular');
+        const tabVip = document.getElementById('tab-vip');
+
+        if (tabRegular != null) {
+            setTab(tabRegular);
+        }
+
+        if (tabVip != null) {
+            setTab(tabVip);
+        }
+
+    }
+
+    // Event listeners to reset the dark colors of the tabs when they are clicked, this is to avoid the default styles causing problems
+    document.getElementById('tab-regular').addEventListener('click', function() {
+        if (darkmode === true) {
+            setDarkTabColors(darkmode === true ? true : false);
+        }
+    });
+    document.getElementById('tab-vip').addEventListener('click', function() {
+        if (darkmode === true) {
+            setDarkTabColors(darkmode === true ? true : false);
+        }
+    });
 
 // RUN AT PAGE LOAD //
 // RUN AT PAGE LOAD //
