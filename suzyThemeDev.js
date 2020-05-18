@@ -607,16 +607,21 @@ let darkmode;
     }
 
     // Event listeners to reset the dark colors of the tabs when they are clicked, this is to avoid the default styles causing problems
-    document.getElementById('tab-regular').addEventListener('click', function() {
-        if (darkmode === true) {
-            setDarkTabColors(darkmode === true ? true : false);
-        }
-    });
-    document.getElementById('tab-vip').addEventListener('click', function() {
-        if (darkmode === true) {
-            setDarkTabColors(darkmode === true ? true : false);
-        }
-    });
+    if (document.getElementById('tab-regular') != null) {
+        document.getElementById('tab-regular').addEventListener('click', function() {
+            if (darkmode === true) {
+                setDarkTabColors(darkmode === true ? true : false);
+            }
+        });
+
+    }
+    if (document.getElementById('tab-vip') != null) {
+        document.getElementById('tab-vip').addEventListener('click', function() {
+            if (darkmode === true) {
+                setDarkTabColors(darkmode === true ? true : false);
+            }
+        });
+    }
 
 // RUN AT PAGE LOAD //
 // RUN AT PAGE LOAD //
